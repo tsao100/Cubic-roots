@@ -18,6 +18,7 @@
   ;"Divides two complex numbers."
   (setq denom (+ (* (car c2) (car c2)) (* (cadr c2) (cadr c2))))
   (setq num (complex-mul c1 (list (car c2) (- (cadr c2)))))
+  (if (= denom 0.0) (setq denom 1e-200))
   (list (/ (car num) denom) (/ (cadr num) denom)))
 
 (defun complex-root (c n)
@@ -72,8 +73,8 @@
 
 
 
-;(cubic-roots 1 3.0 5 7)
+;(cubic-roots 1 3.0 5 7) use real nnn.0 will be better.
 ;|
-(setq roots (cubic-roots 1 -6 11 -6))  ;; Solves x3 - 6x2 + 11x - 6 = 0
+(setq roots (cubic-roots 1 -6.0 11 -6))  ;; Solves x3 - 6x2 + 11x - 6 = 0
 (princ roots)  ;; Expected Output: (1 2 3)
 |;
